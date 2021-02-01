@@ -1,16 +1,14 @@
-<p>
-  <strong>Commenter:</strong>
-  <%= comment.commenter %>
-</p>
+<div class="box is-flex is-justify-content-space-between">
+  <p class="is-size-5">
+    <strong><%= comment.commenter %>:</strong>
+    <%= comment.body %>
+  </p>
+  
+    
+  <span class="icon mt-1">
+    <%= link_to [comment.article, comment], method: :delete, data: { confirm: "Are you sure?" } do %>
+      <i class="fas fa-lg fa-trash"></i>
+    <% end %>
 
-<p>
-  <strong>Comment:</strong>
-  <%= comment.body %>
-</p>
-
-<p>
-  <%= link_to "Delete comment", [comment.article, comment],
-              method: :delete,
-              data: { confirm: "Are you sure?" } %>
-</p>
-
+  </span>
+</div>
