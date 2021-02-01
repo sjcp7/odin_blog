@@ -1,16 +1,28 @@
-<h1><%= @article.title %></h1>
+<section class="section">
+  <div class="is-flex is-justify-content-space-between">
+    <h1 class="title is-size-1"><%= @article.title %></h1>
+    <div class="is-flex mt-4">
+      <span class="icon">
+        <%= link_to edit_article_path(@article) do %>
+          <i class="fas fa-2x fa-edit"></i>
+        <% end %>
+      </span>
+      <span class="icon ml-4">
+        <%= link_to article_path(@article), method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class="fas fa-2x fa-trash"></i>
+        <% end %>
+      </span>
+    </div>
+  </div>
 
-<p><%= @article.body %></h1>
+  <p class="is-size-5"><%= @article.body %></p>
+  
+</section>
 
-<ul
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Delete", article_path(@article),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %></li>
-</ul>
+<section class="section">
+  <h2 class="title is-size-2">Comments</h2>
+  <%= render @article.comments %>
 
-<h2>Comments</h2>
-<%= render @article.comments %>
-
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
+  <h2 class="subtitle is-size-4 mt-5">Add a comment:</h2>
+  <%= render 'comments/form' %>
+</section>
